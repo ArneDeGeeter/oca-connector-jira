@@ -2,13 +2,16 @@
 # Copyright 2019 Brainbean Apps (https://brainbeanapps.com)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
+import logging
 from itertools import groupby
 
 from odoo import _, exceptions, fields, models
 
 from odoo.addons.component.core import Component
-import logging
+
 _logger = logging.getLogger(__name__)
+
+
 class JiraResUsers(models.Model):
     _name = "jira.res.users"
     _inherit = "jira.binding"
@@ -92,10 +95,10 @@ class ResUsers(models.Model):
                     jira_user = jira_user[0]
                     existing = (
                         self.env["jira.res.users"]
-                        .with_context(
+                            .with_context(
                             active_test=False,
                         )
-                        .search(
+                            .search(
                             [
                                 ("backend_id", "=", backend.id),
                                 ("external_id", "=", jira_user.key),
@@ -161,8 +164,7 @@ class UserAdapter(Component):
         # User 'key' is unique and if same key appears several times, it means
         # that same user is present in multiple User Directories
         for user in users:
-            _logger.info(vars(user))
-            _logger.info(user.__dict__)
+            _logger.info(user.accountId)
         users = list(
             map(
                 lambda group: list(group[1])[0],
