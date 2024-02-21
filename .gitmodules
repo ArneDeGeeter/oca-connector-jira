@@ -1,0 +1,16 @@
+[submodule "oca-web"]
+	path = oca-web
+	url = https://github.com/OCA/web
+	branch = 15.0
+[submodule "oca-connector"]
+	path = oca-web
+	url = https://github.com/OCA/connector
+	branch = 15.0
+[submodule "oca-queue"]
+	path = oca-web
+	url = https://github.com/OCA/queue
+	branch = 15.0
+[submodule "oca-server-ux"]
+	path = oca-web
+	url = https://github.com/OCA/server-ux
+	branch = 15.0
