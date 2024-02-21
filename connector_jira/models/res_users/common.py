@@ -159,16 +159,12 @@ class UserAdapter(Component):
         users = self.client.search_users(
             query=fragment, maxResults=None, includeActive=True, includeInactive=True
         )
-        _logger.info(users)
-        _logger.info(fragment)
         # User 'key' is unique and if same key appears several times, it means
         # that same user is present in multiple User Directories
-        for user in users:
-            _logger.info(user.accountId)
         users = list(
             map(
                 lambda group: list(group[1])[0],
-                groupby(users, key=lambda user: user.id),
+                groupby(users, key=lambda user: user.accountId),
             )
         )
 
