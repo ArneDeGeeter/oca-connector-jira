@@ -168,4 +168,5 @@ class UserAdapter(Component):
             )
         )
 
+
         return users
