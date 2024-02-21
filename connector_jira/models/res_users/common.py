@@ -7,8 +7,8 @@ from itertools import groupby
 from odoo import _, exceptions, fields, models
 
 from odoo.addons.component.core import Component
-
-
+import logging
+_logger = logging.getLogger(__name__)
 class JiraResUsers(models.Model):
     _name = "jira.res.users"
     _inherit = "jira.binding"
@@ -152,7 +152,8 @@ class UserAdapter(Component):
         users = self.client.search_users(
             query=fragment, maxResults=None, includeActive=True, includeInactive=True
         )
-
+        _logger.info(users)
+        _logger.info(fragment)
         # User 'key' is unique and if same key appears several times, it means
         # that same user is present in multiple User Directories
         users = list(
