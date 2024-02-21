@@ -88,7 +88,7 @@ class ResUsers(models.Model):
                                 "key": resolve_by_key,
                                 "value": resolve_by_value,
                                 "error": "multiple_found",
-                                "detail": [x.key for x in jira_user],
+                                "detail": [x.accountId for x in jira_user],
                             }
                         )
                         continue
@@ -101,7 +101,7 @@ class ResUsers(models.Model):
                             .search(
                             [
                                 ("backend_id", "=", backend.id),
-                                ("external_id", "=", jira_user.key),
+                                ("external_id", "=", jira_user.accountId),
                                 ("odoo_id", "!=", user.id),
                             ]
                         )
@@ -120,12 +120,12 @@ class ResUsers(models.Model):
                         binding = self.env["jira.res.users"].create(
                             {"backend_id": backend.id, "odoo_id": user.id}
                         )
-                        binder.bind(jira_user.key, binding)
+                        binder.bind(jira_user.accountId, binding)
                         bknd_result["success"].append(
                             {
                                 "key": "login",
                                 "value": user.login,
-                                "detail": jira_user.key,
+                                "detail": jira_user.accountId,
                             }
                         )
                     except Exception as err:
