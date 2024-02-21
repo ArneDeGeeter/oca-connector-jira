@@ -165,7 +165,7 @@ class UserAdapter(Component):
         users = list(
             map(
                 lambda group: list(group[1])[0],
-                groupby(users, key=lambda user: user.accountID),
+                groupby(users, key=lambda user: user.id),
             )
         )
 
