@@ -1,6 +1,6 @@
 # generated from manifests external_dependencies
 cryptography
-jira==3.6.0
+jira==3.2.0
 oauthlib
 PyJWT
 requests

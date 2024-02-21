@@ -160,10 +160,12 @@ class UserAdapter(Component):
         _logger.info(fragment)
         # User 'key' is unique and if same key appears several times, it means
         # that same user is present in multiple User Directories
+        for user in users:
+            _logger.info(help(user))
         users = list(
             map(
                 lambda group: list(group[1])[0],
-                groupby(users, key=lambda user: user.key),
+                groupby(users, key=lambda user: user.accountID),
             )
         )
 
