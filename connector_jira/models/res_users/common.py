@@ -150,7 +150,7 @@ class UserAdapter(Component):
         :param fragment: a string to match usernames, name or email against.
         """
         users = self.client.search_users(
-            fragment, maxResults=None, includeActive=True, includeInactive=True
+            query=fragment, maxResults=None, includeActive=True, includeInactive=True
         )
 
         # User 'key' is unique and if same key appears several times, it means
