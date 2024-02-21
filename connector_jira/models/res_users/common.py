@@ -60,6 +60,10 @@ class ResUsers(models.Model):
                     for resolve_by in backend.get_user_resolution_order():
                         resolve_by_key = resolve_by
                         resolve_by_value = user[resolve_by]
+                        _logger.info("_______")
+                        _logger.info(user)
+                        _logger.info(resolve_by)
+                        _logger.info(user[resolve_by])
                         jira_user = adapter.search(fragment=resolve_by_value)
                         if jira_user:
                             break
