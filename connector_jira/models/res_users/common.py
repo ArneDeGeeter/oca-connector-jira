@@ -161,7 +161,8 @@ class UserAdapter(Component):
         # User 'key' is unique and if same key appears several times, it means
         # that same user is present in multiple User Directories
         for user in users:
-            _logger.info(help(user))
+            _logger.info(vars(user))
+            _logger.info(user.__dict__)
         users = list(
             map(
                 lambda group: list(group[1])[0],
